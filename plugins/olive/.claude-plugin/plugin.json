@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-manifest.json",
   "name": "olive",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Task management workflows and MCP integration for Olive.",
   "author": {
     "name": "Bit Monkey"

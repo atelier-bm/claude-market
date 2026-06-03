@@ -26,6 +26,9 @@ Tasks:
 - `olive_create_task` — create a task. `title` is required. Optional fields include `notes`, `project_id`, `assignee_id`, `due_at`, `due_has_time`, `status`, `tags`, and `metadata`.
 - `olive_update_task` — partially update a task by `id`.
 - `olive_complete_task`, `olive_reopen_task`, `olive_delete_task` — complete, reopen, or soft-delete a task by `id`.
+- `olive_list_task_notes` — list notes/comments/progress history attached to a task. Input: `task_id` (ULID or short ID).
+- `olive_create_task_note` — add a note/comment/update to a task. Inputs: `task_id`, `text`; authorship is automatic from the authenticated Olive user.
+- `olive_update_task_note` — edit an existing task note by `task_id`, note ULID `note_id`, and `text`. Only the note owner or an admin can update it.
 
 Views and resources:
 - `olive_today` / `olive://views/today` — tasks due today or overdue for the authenticated user.
@@ -51,6 +54,9 @@ Admin-only:
 - For date fields, send ISO/RFC3339 values when possible. Use `due_has_time: true` only when the time is meaningful.
 - For assignment, use user IDs when known. If only a name is given, first discover the relevant task/project context or ask a concise clarification if the assignee is ambiguous.
 - For tags, use lowercase/no-spaces by convention and call `olive_list_tags` when discovery prevents duplicates.
+- Use task notes for comments, progress updates, observations, and context attached to an existing task. Prefer `olive_create_task_note` over stuffing note-like content into task titles/descriptions or replacing the task's main `notes` field.
+- Use `olive_list_task_notes` when the user asks for task history, prior context, comments, or updates.
+- Treat task note IDs, task IDs, and user IDs as ULIDs unless a task short ID is explicitly accepted. Never supply `user_id` for note creation; Olive sets authorship from the authenticated user.
 - Confirm destructive actions such as delete/archive unless the user explicitly requested the exact action.
 
 ## When Not to Use Olive
