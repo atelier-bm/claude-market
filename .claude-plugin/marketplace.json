@@ -1,0 +1,17 @@
+{
+    "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+    "name": "bitmonkey-plugins",
+    "description": "Bitmonkey plugin marketplace",
+    "owner": {
+        "name": "Bit Monkey",
+        "email": "support@bit-monkey.io"
+    },
+    "plugins": [
+        {
+            "name": "olive",
+            "source": "./plugins/olive",
+            "description": "Olive task management",
+            "category": "productivity"
+        }
+    ]
+}
