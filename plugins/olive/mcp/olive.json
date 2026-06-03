@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "olive": {
+      "type": "http",
+      "url": "https://olive.bit-monkey.io/mcp",
+      "oauth": {
+        "scopes": "olive:mcp"
+      }
+    }
+  }
+}
